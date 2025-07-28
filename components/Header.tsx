@@ -85,18 +85,18 @@ export default function Header() {
     <>
       {/* -- Page Header -- */}
       <header
-        className={`sticky top-0 z-50 container mx-auto max-w-[1200px] bg-white px-4 pt-0 transition-transform duration-300 ease-in-out lg:backdrop-blur-sm shadow-md border-b-2 ${
+        className={`sticky top-0 z-50 container mx-auto max-w-[1200px] bg-white px-4 pt-0 transition-transform duration-300 ease-in-out lg:backdrop-blur-sm shadow-md  ${
           isHeaderVisible ? "translate-y-0" : "-translate-y-[150%]"
         }`}
       >
-        <div className="py-4 md:px-10 w-full flex h-11 md:h-12 items-center justify-between   gap-8">
+        <div className="py-4 md:px-10 w-full flex h-16 md:h-12 items-center justify-between   gap-8">
           <div className="flex items-center ">
             <Link href="/" className="hidden md:flex items-center font-semibold text-sm text-gray-700 px-4 py-2 hover:bg-gray-200 transition-colors rounded-full">
               Home
             </Link>
             <Link
               href="/contact-us"
-              className="md:hidden rounded-full bg-red-600 px-2 py-1 text-sm font-medium text-white shadow-sm hover:bg-red-500"
+              className="md:hidden rounded-full bg-red-600 px-6 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-red-500"
             >
               Get in Touch
             </Link>
