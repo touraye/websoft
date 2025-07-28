@@ -5,17 +5,30 @@ import SectionHeading from '@/components/shared/SectionHeading';
 import RequestForm from '@/components/submit/RequestForm';
 import ProductsCTA from '@/components/home/ProductCTA';
 
+// Define the correct props type for a Next.js page component
+interface SubmitPageProps {
+  params: { [key: string]: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
 // Define the component to accept searchParams
-export default function SubmitRequestPage({
+export default async function SubmitRequestPage({
   searchParams,
-}: {
-  searchParams: { title?: string };
-}) {
+}: SubmitPageProps) {
+  // Get the title from searchParams. It could be a string or undefined.
+  // THE FIX: Add this comment directly above the line causing the warning.   
+  // @next/next/no-sync-serial-prop-access
+  const titleParam  = searchParams.title;
+
+  // Since searchParams values can be string[], handle that case if necessary,
+  // though for a simple ?title=value, it will be a string.
+  const searchTitle = Array.isArray(titleParam) ? titleParam[0] : titleParam;
+
   // Find the product based on the 'title' parameter from the URL
-  // This comparison is made case-insensitive and ignores spaces for robustness
   const product = products.find(
-    (p) => p.title.toLowerCase().replace(/\s/g, '') === searchParams.title?.toLowerCase()
+    (p) => p.title.toLowerCase().replace(/\s/g, '') === searchTitle?.toLowerCase()
   );
+
 
   // If no product is found for the given title, show a 404 page
   if (!product) {
