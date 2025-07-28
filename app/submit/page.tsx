@@ -18,11 +18,11 @@ export default async function SubmitRequestPage({
   // Get the title from searchParams. It could be a string or undefined.
   // THE FIX: Add this comment directly above the line causing the warning.   
   // @next/next/no-sync-serial-prop-access
-  const titleParam  = searchParams.title;
+  const {title}  = await searchParams;
 
   // Since searchParams values can be string[], handle that case if necessary,
   // though for a simple ?title=value, it will be a string.
-  const searchTitle = Array.isArray(titleParam) ? titleParam[0] : titleParam;
+  const searchTitle = Array.isArray(title) ? title[0] : title;
 
   // Find the product based on the 'title' parameter from the URL
   const product = products.find(
