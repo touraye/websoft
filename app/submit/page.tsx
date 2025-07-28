@@ -7,7 +7,7 @@ import ProductsCTA from '@/components/home/ProductCTA';
 
 // Define the correct props type for a Next.js page component
 interface SubmitPageProps {
-  params: { [key: string]: string };
+  params: Promise<{ [key: string]: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
